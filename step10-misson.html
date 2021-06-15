@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial;
+            font-size: 17px;
+            padding: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .row {
+            display: -ms-flexbox;
+            /* IE10 */
+            display: flex;
+            -ms-flex-wrap: wrap;
+            /* IE10 */
+            flex-wrap: wrap;
+            margin: 0 -16px;
+        }
+
+        .col-25 {
+            -ms-flex: 25%;
+            /* IE10 */
+            flex: 25%;
+        }
+
+        .col-50 {
+            -ms-flex: 50%;
+            /* IE10 */
+            flex: 50%;
+        }
+
+        .col-75 {
+            -ms-flex: 75%;
+            /* IE10 */
+            flex: 75%;
+        }
+
+        .col-25,
+        .col-50,
+        .col-75 {
+            padding: 0 16px;
+        }
+
+        .container {
+            background-color: #f2f2f2;
+            padding: 5px 20px 15px 20px;
+            border: 1px solid lightgrey;
+            border-radius: 3px;
+        }
+
+        input[type=text] {
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        label {
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .icon-container {
+            margin-bottom: 20px;
+            padding: 7px 0;
+            font-size: 24px;
+        }
+
+        .btn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px;
+            margin: 10px 0;
+            border: none;
+            width: 100%;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 17px;
+        }
+
+        .btn:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            color: #2196F3;
+        }
+
+        hr {
+            border: 1px solid lightgrey;
+        }
+
+        span.price {
+            float: right;
+            color: grey;
+        }
+
+        /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+        @media (max-width: 800px) {
+            .row {
+                flex-direction: column-reverse;
+            }
+
+            .col-25 {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script>
+        let pizza_all = {
+            "t1": {
+                "name": "불고기 곡우 도우",
+                "topping": "불고기",
+                "dough": "씬",
+                "drink": "코카콜라"
+            },
+            "t2": {
+                "name": "직화 스테이크 곡물 도우",
+                "topping": "스테이크",
+                "dough": "치즈엣지",
+                "drink": "스프라이트"
+            },
+            "t3": {
+                "name": "씨푸드 퐁듀 곡물 도우",
+                "topping": "쉬림프",
+                "dough": "오리지널",
+                "drink": "코카콜라"
+            },
+            "t4": {
+                "name": "쉬림푸스",
+                "topping": "쉬림프",
+                "dough": "슈퍼시드 도우",
+                "drink": "스프라이트"
+            },
+            "t5": {
+                "name": "치즈케이크샌드",
+                "topping": "치즈",
+                "dough": "더블치즈엣지",
+                "drink": "코카콜라"
+            }
+        };
+        function topping_print(name) {
+            for (p in pizza_all) {
+                if (pizza_all[p].name == name) {
+                    document.getElementById("topping").value = person_all[p].topping;
+                }
+            }
+        }
+        function dough_print(name) {
+            for (p in pizza_all) {
+                if (pizza_all[p].name == name) {
+                    document.getElementById("dough").value = person_all[p].dough;
+
+                }
+            }
+        }
+        function drink_print(name) {
+            for (p in pizza_all) {
+                if (pizza_all[p].name == name) {
+                    document.getElementById("drink").value = person_all[p].drink;
+                }
+            }
+        }
+
+        // function print_data(name) {
+        //     // alert(person_all['p'+no]);
+        //     // console.log(person_all['p'+no].name);
+        //     document.getElementById("topping").value = pizza_all['t' + no].topping;
+        //     document.getElementById("dough").value = pizza_all['t' + no].dough;
+        //     document.getElementById("drink").value = pizza_all['t' + no].drink;
+        // }
+    </script>
+
+
+
+
+    <h1 align=center>선영`s Pizza</h1>
+    <h4>치킨 집을 성공적으로 런칭 시킨 선영이가 이번에는 피자사업을 시작했다. <h4>
+            피자를 입력하면 아래에 피자정보가 출력되는 프로그램을 만들어보았다.</p>
+            <div class="row">
+                <div class="col-75">
+                    <div class="container">
+
+
+                        <div class="row">
+                            <div class="col-50">
+                                <h3>피자 정보 확인</h3>
+                                <label for="fname"><i class="fa fa-cutlery"></i> 메뉴</label>
+                                <input type="text" id="name" name="name">
+
+                                <label for="email"><i class="fa fa-fire"></i> 토핑 </label>
+                                <input type="text" id='topping' name="topping">
+                                <label for="adr"><i class="fa fa-leaf"></i> 도우</label>
+                                <input type="text" id="dough" name="dough">
+                                <label for="city"><i class="fa fa-tint"></i> 음료</label>
+                                <input type="text" id="drink" name="drink">
+
+
+                            </div>
+
+                            <div class="col-50">
+                                <h3>결제 수단</h3>
+                                <label for="fname">이런 카드로 결제가능합니다.</label>
+                                <div class="icon-container">
+                                    <i class="fa fa-cc-visa" style="color:navy;"></i>
+                                    <i class="fa fa-cc-amex" style="color:blue;"></i>
+                                    <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                                    <i class="fa fa-cc-discover" style="color:orange;"></i>
+                                </div>
+                                <label for="cname">주문자 이름</label>
+                                <input type="text" id="cname" name="cardname">
+                                <label for="ccnum">전화번호</label>
+                                <input type="text" id="ccnum" name="cardnumber">
+                                <label for="expmonth">주소</label>
+                                <input type="text" id="expmonth" name="expmonth">
+
+                            </div>
+
+                        </div>
+                        <label>
+                            <input type="checkbox" checked="checked" name="sameadr"> 주문에 동의하십니까?
+                        </label>
+                        <input type="submit" value="주문완료" class="btn" id=fin>
+
+                    </div>
+                </div>
+                <div class="col-25">
+                    <div class="container">
+                        <h4>피자리스트 <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i>
+                                <b>4</b></span>
+                        </h4>
+                        <p id="pid"><button value='1' onclick="print_data(this.value)">불고기 곡물 도우</button> <span
+                                class="price">$15</span></p>
+                        <p id="pid"><button value='2' onclick="print_data(this.value)">직화 스테이크 곡물 도우</button> <span
+                                class="price">$15</span></p>
+                        <p id="pid"><button value='3' onclick="print_data(this.value)">씨푸드 퐁듀 곡물 도우</button> <span
+                                class="price">$18</span></p>
+                        <p id="pid"><button value='4' onclick="print_data(this.value)">쉬림푸스</button> <span
+                                class="price">$20</span></p>
+                        <p id="pid"><button value='5' onclick="print_data(this.value)">치즈케이크샌드</button> <span
+                                class="price">$22</span></p>
+                        <hr>
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- 아이디 :<input type="text" id="pid"><br>
+    이름 : <input type="text" id="pname" onblur="id_print(this.value)"><br>
+
+    <script>
+        function id_print(name){
+            for(p in person_all){
+                if(person_all[p].name == name){
+                  document.getElementById("pid").value = person_all[p].id;
+                }
+            }
+        }
+
+
+        var person_all = {
+            'p1': {
+                "name": '2인',
+                'id': adress, pay , 침대개수
+            },
+            'p2': {
+                "name": '영자',
+                'id': 15
+            },
+            'p3': {
+                "name": '영비',
+                'id': 18
+            }
+        }; -->
+            </script>
+
+</body>
+
+</html>

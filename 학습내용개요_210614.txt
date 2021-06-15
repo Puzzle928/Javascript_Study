@@ -1,0 +1,54 @@
+java script 학습
+
+
+1. 개요
+    브라우저 내부에 js 인터프리터 존재
+    서버 없이도 브라우저만 있을 경우 단순 실행
+
+    end user에게 서비스를 위해서는 http 프로토콜 기반의 서버에 설치(배포)해서 서비스
+
+
+
+2. 실습 환경
+    1. 개발
+        1. html 파일에 포함해서 개발 *.html
+        2. *.js 라는 파일로 js로만 구성된 개별 개발 후에 html에서 include 포함해서 사용
+    2. tool
+        브라우저
+        웹서버(vsc live server)
+
+3. 용어
+    1.바닐라 라는 IT에서 사용
+        바닐라 js - 순수 java script로만 개발 하는 구조를 의미
+
+    2. java script 필요성 및 활용가 엄청 상승되면서 지원하는 libary들이 엄청 많음
+
+    3. 진정한 실력자는 libary들 사용도 능해야 하나 순수 js로도 그런 개발을 할 수 있어야 함
+
+    3-2 정적 파일이란?
+        html/css/js/이미지(동영상,사진)/일반 파일들 의미
+        cf: flask 개발 구조의 static(정적) 폴더 하위에 내포
+
+        
+    3-3 동적 파일이란?
+        서버단에서 back end 개발 해서 client에게 응답한 즉 요청 따라 가변적인 데이터를 응답해 줄 수 있는
+        서버단 개발 언어들로 구성된 파일
+        (jsp, [py], asp, php...)
+
+4. 진행 계획
+    1. java script + flask 연동
+        mvc + dao + vo(dto)
+    2. 비동기 기술
+        char도 포함
+    3. 코딩 컨벤션  - eslint
+        학습 후
+        팀단위로 eslint만 적용된 미션 수행- 브리핑
+        
+    4. project
+        -log 기록
+        - swagger doc + rest api + char ...
+        1.3명
+
+5. 참고 flask1
+    1. image 파일 포함
+        static 디렉토리 포함

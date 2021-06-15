@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+    <body id = 'main2'>
+
+
+    <button onclick = "alert('클릭되었음')">클릭</button>
+    <br>
+    <button id = 'btn'>클릭2</button>
+
+        <script>
+        // 익명 함수(이름이 없는 함수)
+        /* 이름으로 함수 구분은 불가/재사용성이 고려되지 않은
+        특정 로직에서만 필요한 경우에 선호하는 문법 */
+        //두번째 버튼에만 종속적으로 이벤트 처리 하겠습니다.
+        /* 다수의 tag중에 특정 tag에만 이벤트 등록(click? 마우스 움직임, 포커스 이동?)
+            등록된 시점에 실행되는 특별한 기능(이벤트 처리하는 기능)
+            = 이벤트 핸들러
+
+
+            button click시에 이름 출력
+            필요정보
+            어떤 버튼? 시점은 click  click시에 이름 출력
+            */
+        // document.getElementById('btn').addEventListener('click', function(){
+        //     alert('정현');
+        // });
+
+        document.getElementById('main2').addEventListener('load', function() {
+            alert("Page is loaded");
+        });
+            
+
+
+
+
+        </script>
+    </body>
+</html>

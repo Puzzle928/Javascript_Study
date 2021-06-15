@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>js 함수 구현 문법</h3>
+
+    <script>
+        // 함수 기본 문법
+        function fun1(){
+            return '일반문법';
+        }
+        console.log(fun1());
+
+        // 익명함수를 funvar2 변수에 대입 문법
+        // funvar2 변수는 함수 자체를 하나의 식으로 인지
+        // 리터럴 보유하게 되는 변수
+        /* 리터럴이란?
+        사람 (해석기)이 이해할 수 있는 문자 또는 약속된 기호를 사용해서
+        표현 및 값을 생성하는 표가법 ..
+        문자열처럼 간주  */
+
+    
+        let funva2 = function(){
+            return "이름없는 함수(익명함수)";
+        }
+        let funva3 = function(v){
+            return "이름없는 함수(익명함수)"+ v;
+        }
+        console.log(funva3());
+
+        //3. 화살표 함수(python의 lambda와 흡사)
+        let funvar4 = (v) => '화살표 함수' + v ;
+        console.log(funvar4('encore'));
+
+        //4. 구현하자 마자 바로 실행 해 버리는 즉시 실행 함수
+        // 주 용도: 브라우저 실행시 client로 인한 이벤트 없이도 실행 시켜야
+        // 할 로직이 있을 경우 적합
+        (function fun5(name, age){
+            console.log(name, age)
+            }('유재석', 49))
+    </script>
+</body>
+</html>

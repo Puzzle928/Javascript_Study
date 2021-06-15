@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> json 포멧 데이터를 form input tag에 출력하기</h3>
+
+    firstName :<input type="text" id="id1"><br>
+    lastName : <input type="text" id="id2"><br>
+    id : <input type="text" id="id3">
+
+    <br><hr><br>
+    아이디 :<input type="text" id="pid"><br>
+    이름 : <input type="text" id="pname"><br>
+
+    <!-- this는 포함된 tag(element 자신을 의미) -->
+    <button value="1" onclick="print_data(this.value)">1</button> 
+    <button value="2" onclick="print_data(this.value)">2</button> 
+    <button value="3" onclick="print_data(this.value)">3</button> 
+    <button value="4" onclick="print_data(this.value)">4</button>
+
+    <br><hr><br>
+    <!-- 응용 2단계-->
+    <button value="p1" onclick="print_data(this.value)">1</button> 
+    <button value="p2" onclick="print_data(this.value)">2</button> 
+    <button value="p3" onclick="print_data(this.value)">3</button> 
+    <button value="p4" onclick="print_data(this.value)">4</button>
+
+    <script>
+        function print_data(no){
+            // alert(person_all['p'+ no]);
+            // console.log(person_all['p'+ no]);
+        
+
+        document.getElementById('pid').value = person_all['p'+ no].id;
+        document.getElementById('pname').value = person_all['p'+ no].name;
+    }
+
+
+
+        var person = {
+            'firstName': "John",
+            'lastName': "Doe",
+            'id': 5566
+            
+        };
+        document.getElementById('id1').value  = person.firstName;
+        document.getElementById('id2').value  = person.lastName;
+        document.getElementById('id3').value  = person.id;
+
+        var person_all = {
+            'p1': {
+                "name": '재석',
+                'id': 12
+            },
+            'p2': {
+                "name": '영자',
+                'id': 15
+            },
+            'p3': {
+                "name": '영비',
+                'id': 18
+            }
+        };
+        let v= 'p'+ 1
+        // console.log(person_all[v]);
+
+    </script>
+</body>
+</html>

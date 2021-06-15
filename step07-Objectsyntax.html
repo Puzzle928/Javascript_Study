@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>js에서 객체 생성 및 활용하는 방법</h3>
+
+    <br>
+    <hr><br>
+    1. 복합 데이터 구조를 사용하기 위한 포멧 <br>
+    2. 언어별 객체 지향 또는 객체 기반 <br>
+    3. html tag(element) / attrubute(속성) / text 모두다 객체로 처리 <br>
+    4. 주 목적 : js에서 다량의 데이터들을 효율적으로 관리 및 활용 할 수 있는 기술 학습 <br>
+
+    <script>
+        // 사람 데이터로 처리
+
+
+        //1. 객체 리터럴 방식
+        // 이미 존재하는 객체에서 property 삭제, 데이터 수정,
+        // data1 객체 참조 변수/name, age property(타 언어에선 객체가 보유하고 있는 변수)
+        let data1 = {
+            name: '재석', age: 49
+        };
+        console.log(data1.name)
+
+        //Alt + Shift + f 로 포멧자동 설정
+        var person = {
+            firstName: "John",
+            lastName: "Doe",
+            id: 5566,
+            fullName: function () {
+                return this.firstName + " " + this.lastName;
+            }
+        };
+        console.log(person.firstName)
+        console.log(person.fullName());
+
+
+
+        console.log('--step02 json --')
+        //2. JSON 객체(java script object notation) 객체
+        // json - 서버에서 client 로 데이터 전송 or 클리우드 기반의 설정 정보
+        // nosql 즉 sql문장 없이도 데이터 crud 가능한 솔루선의 데이터 저장 포멧
+        // 참고 : nosql(데이터베이스) - Elsticsearch / mongodb 
+        let data2 = {
+            name: "종원", age: 80
+        };
+        console.log(data2.name = '바부')
+        delete data2.age;
+
+        console.log('******')
+        let data22 = {
+            "rules": {
+                "constructor-super": 2,
+                "for-direction": 2,
+                "getter-return": 2,
+                "no-async-promise-executor": 2,
+                "no-case-declarations": 2,
+                "no-class-assign": 2,
+                "no-compare-neg-zero": 2,
+                "no-cond-assign": 2,
+                "no-const-assign": 2,
+                "no-constant-condition": 2,
+                "no-control-regex": 2,
+                "no-debugger": 2,
+                "nodeletevar": 200,
+                "no-dupe-args": 2,
+                "no-dupe-class-members": 2
+            }
+        }
+        console.log(data22.rules.nodeletevar);
+
+
+        console.log("-- step03 생성자로 객체 생성 --")
+        //3. 생상자를 활용한 객체
+        //이미 존재하는 클래스들로 new와 생성자 조합으로 객체 생성
+        //python에선 new 키워드 없이 생성자 호출해서 객체 생성
+
+        
+        var x = new String('지석진');        // Declares x as a String object
+        var y = new Number();        // Declares y as a Number object
+        var z = new Boolean();       // Declares z as a Boolean object
+        console.log(x.length);
+    </script>
+</body>
+
+</html>

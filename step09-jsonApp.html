@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>이름 입력하면 id가 출력되는 동적 page 구성</h3><br>
+
+    1. 이벤트 발생 시점 정하기 <br>
+    2. 다수의 이름값들 비교를 어떻게 할 수 있는가 <br>
+    3. 이름 비교로 선별한 id값 출력 코드는 어떻게 할 것인지 ... <br>
+
+    <br><hr><br>
+
+    아이디 :<input type="text" id="pid"><br>
+    <!-- onblur - 포인터가 이동하는 것을 감지하는 이벤트 감지기 속성 -->
+    이름 : <input type="text" id="pname" onblur="id_print(this.value)"><br>
+
+    <script>
+        function id_print(name){
+            for(p in person_all){
+                if(person_all[p].name == name){
+                  document.getElementById("pid").value = person_all[p].id;
+                }
+            }
+        }
+
+
+        var person_all = {
+            'p1': {
+                "name": '재석',
+                'id': 12
+            },
+            'p2': {
+                "name": '영자',
+                'id': 15
+            },
+            'p3': {
+                "name": '영비',
+                'id': 18
+            }
+        };
+    </script>
+</body>
+
+</html>

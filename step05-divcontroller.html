@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>div에 데이터(text or html tag 구조)를 동적으로 입출력</h3>
+    1. div tag에 데이터 표현시 innerText - 무조건 문자열로 처리<br>
+    2. innerHTML - tag 형식의 문자열은 tag로 처리
+    
+    <br><hr><br>
+
+    
+    <div id="div1"></div>
+    <div id="div2"></div>
+
+    <br><hr><br>
+
+    <button onclick="div1print()">div에 문자열 출력</button> -
+    <button onclick="div2print()">div2에 html tag 출력</button> -
+    <button onclick="div3print()">div3에 html tag 출력</button>
+    <button ondrag="drag3"></button>
+
+    <script>
+        function div1print(){
+            document.getElementById('div1').innerText = "<b>문자열</b>"
+        }
+        function div2print(){
+        // document.getElementById("div2").innerHTML = "<b>문자열</b>";
+        // js 버전업 시에 추가된 문자열 처리 방식 - 백틱 ` 내부에 표현하는 모든 것들을 순수 문자열로 처리함
+        // js 관점에선 순수 문자열 , 단 div의 innerHTML 속성으로 tag로 자동변환되면서 렌더링
+        // 이 기술로 web page의 동적 처리가 가능
+        document.getElementById("div2").innerHTML = `<form action="/action_page.php">
+            <label for="fname">First name:</label><br>
+            <input type="text" id="fname" name="fname" value="John"><br>
+            <label for="lname">Last name:</label><br>
+            <input type="text" id="lname" name="lname" value="Doe"><br><br>
+            <input type="submit" value="Submit">
+            </form>`;
+}
+        function div3print(){
+            // document.getElementById("div2").innerHTML = "<b>문자열</b>";
+            document.getElementById("div2").innerHTML = `<form>
+            <input type="radio" id="male" name="gender" value="강정현">
+            <label for="male">강정현</label><br>
+            <input type="radio" id="female" name="gender" value="류선영">
+            <label for="female">류선영</label><br>
+            <input type="radio" id="other" name="gender" value="정일균">
+            <label for="other">정일균</label>
+            </form> `;
+        }
+
+
+
+    </script>
+
+</body>
+</html>
+
