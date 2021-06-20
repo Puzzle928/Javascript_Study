@@ -1,0 +1,35 @@
+pattern
+
+1. 프로그램상에서도 정형화된 구조로 개발 권장
+
+2. 언어는 도구일뿐 / 구조는 모든 언어가 적용
+
+3. web에서 권장하는 개발 구조
+    1. MVC pattern 구조
+        M - Model/business/core/데이터를 직접 다루는 핵심 기능
+
+        V - View / presentation / clinet 사용하는 화면
+            html / css / java script & 서버에서 응답하는 동적 데이터를 출력할 수 있는 서버단 스크립트 언어(jsp/asp/php../)
+            template engine(flask에 내장된 jinja2 라는 엔진) - {{ 출력 데이터 }}
+
+        C - Controller
+            중재자 기능 / 요청에 따른 비즈니스 로직 실행 지시, 응답을 위한 화면을 지정(error 발생시 error 처리 화면 지정,
+            정상응답 상황에선 정상 응답 화면 지정)
+            가령 : 입력된 데이터에 유효? 무효? 에 따라 응답 유효한 경우 다음 단계의 정상 로직 실행
+                무효한 경우 다시 원점 page로 이동해서 재 입력 유도 ....
+
+    2. DAO pattern
+        - Data Access Object의 약어
+        - class 권장 명명 규칙: tableDAO
+                emp01 table 관련된 DAO 권장 - Emp01DAO
+        - sql 처리 로직으로 개발 권장
+
+    3. DTO pattern
+        - Data Transfer Object pattern
+        - Value Object pattern
+        - 가령 : 회원가입자가 동시에 엄청..
+            해당 사이트에선 회원가입 처리 로직의 코드는 하나
+            문제는 회원별 데이터는 다 다름
+            입력데이터수가 회원별 많은 데이터 관리
+            회원별 데이터 보호를 위해 하나의 덩어리로 관리 (객체=복합데이터)
+

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+        </style> -->
+
+        <!-- 현 css는 이사이트의 다수의 html에서 공통적으로 사용되는 파일이라 간주 -->
+    <link rel='stylesheet' href="{{url_for('static', filename= 'css/emp.css')}}">
+        <!--  js 도 다수의 html에서 공통적으로 사용되는 파일이라 간주
+            지금까지는 html 내부에 js코드를 직접 구현
+            프로젝트 볼륨이 커질수록 js도 분리(재사용성 고려) -->
+        <!-- <script scr="{{ url_for('static' , filename='js/emp.js') }}"></script> -->
+    <script src="{{ url_for('static' , filename='js/emp.js') }}"></script>
+</head>
+
+<body>
+
+    <button onclick="myAjax()">비동기로 데이터 요청</button>
+    <button onclick="myAjax2()">비동기로 사번 입력해서 사원명, 급여 검색 요청</button>
+
+    <br>
+    <hr><br>
+    <button onclick='empall()'>모든 직원 보기</button>
+    <br>
+    <hr><br>
+
+    <div id="demo"></div>
+
+
+    <!-- <script>
+        function empall() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    data= this.responseText;
+                    data = JSON.parse(data);
+                    
+                    tab = `
+                    <table border="1">
+                        <tr><th>사번</th><th>이름</th><th>급여</th></tr>`;
+
+                        let empno;
+                        let ename;
+                        let sal;                    
+                    for(no in data){
+                        empno = data[no].empno
+                        ename = data[no].ename
+                        sal = data[no].sal
+
+                        tab = tab + `<tr>
+                            <td>${empno}</td>
+                            <td>${ename}</td>
+                            <td>${sal}</td>
+                        </tr>`;
+                    }
+                    
+                    tab = tab + `</table>`;
+                    document.getElementById('demo').innerHTML = tab;
+
+
+                    }
+                    
+                
+            };
+            xhttp.open("get", "emplist");    
+            xhttp.send();
+        }
+
+
+    </script> -->
+    <br>
+    <hr><br>
+
+    이름 : <input type="text" id="uname"> <br>
+    나이 : <input type="text" id="uage"> <br>
+
+    <br>
+    <hr><br>
+    <h3>직원정보</h3>
+
+    사원번호 : <input type="text" id="empno" placeholder="입력해!!"> <br>
+    사원명 : <input type="text" id="ename"> <br>
+    사원급여 : <input type="text" id="sal"> <br>
+
+
+    <!-- 비동기로 등록도 개발
+        버튼 추가시에 등록정보들을 서버에 전송
+        등록 완료 후에 정상 응답인 경우엔 직원 정보에 자동 출력
+    -->
+    <br>
+    <hr><br>
+    <h3>직원등록</h3>
+
+    사원번호 : <input type="text" id="newEmpno" value="1"> <br>
+    사원명 : <input type="text" id="newEname" value="재석"> <br>
+    사원급여 : <input type="text" id="newSal" value="10"> <br>
+    <button id="insertBtn()" onclick="insertEmp()">등록</button>
+
+
+    <br>
+    <hr><br>
+    <h3>직원정보수정</h3>
+
+    사원번호 : <input type="text" id="setEmpno"> <br>
+    사원명 : <input type="text" id="setEname"> <br>
+    사원급여 : <input type="text" id="setSal"> <br>
+    <button id="updateBtn()" onclick="updateEmp()">수정</button>
+
+    <br>
+    <hr><br>
+    <h3>퇴사직원정보삭제</h3>
+
+    사원번호 : <input type="text" id="delEmpno"> <br>
+    사원명 : <input type="text" id="delEname"> <br>
+    사원급여 : <input type="text" id="delSal"> <br>
+    <button id="delBtn" onclick="deleteEmp()">직원 퇴사</button>
+
+
+
+    <script>
+        //삭제
+        function deleteEmp() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    data = this.responseText;
+                    data = JSON.parse(data);
+
+                }
+            };
+            xhttp.open("POST", "delete");    // http://ip:port/insert
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            // empno=1&ename=재석&sal=10
+            queryString = "empno=" + document.getElementById("delEmpno").value +
+                "&ename=" + document.getElementById("delEname").value +
+                "&sal=" + document.getElementById("delSal").value;
+            xhttp.send(queryString);
+        }
+
+
+        //수정
+        function updateEmp() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    data = this.responseText;
+                    data = JSON.parse(data);
+
+                }
+            };
+            xhttp.open("POST", "update");    // http://ip:port/insert
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            // empno=1&ename=재석&sal=10
+            queryString = "empno=" + document.getElementById("setEmpno").value +
+                "&ename=" + document.getElementById("setEname").value +
+                "&sal=" + document.getElementById("setSal").value;
+            xhttp.send(queryString);
+        }
+
+
+
+        //등록
+        function insertEmp() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    data = this.responseText;
+                    data = JSON.parse(data);
+
+                    document.getElementById("empno").value = document.getElementById("newEmpno").value;
+                    document.getElementById("ename").value = data.ename;
+                    document.getElementById("sal").value = data.sal;
+                }
+            };
+            xhttp.open("POST", "insert");    // http://ip:port/insert
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            // empno=1&ename=재석&sal=10
+            queryString = "empno=" + document.getElementById("newEmpno").value +
+                "&ename=" + document.getElementById("newEname").value +
+                "&sal=" + document.getElementById("newSal").value;
+            xhttp.send(queryString);
+        }
+
+
+
+        function myAjax2() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+
+                    data = this.responseText;
+                    data = JSON.parse(data);
+                    alert(data.ename);
+                    document.getElementById("ename").value = data.ename;
+                    document.getElementById("sal").value = data.sal;
+                }
+            };
+            xhttp.open("POST", "getemp");
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("empno=" + document.getElementById("empno").value);
+
+            // xhttp.open("GET?empno="+document.getElementById("empno").value, "getemp");  
+            // xhttp.send();   
+        }
+
+
+        function myAjax() {
+            const xhttp = new XMLHttpRequest();
+
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {  // 정상응답 완료 여부 검증
+
+                    data = this.responseText;
+                    document.getElementById("demo").innerHTML = data;
+
+                    data = JSON.parse(data);     //key로 value 사용 가능한 json 객체로 변환
+                    document.getElementById("uname").value = data.name;
+                    document.getElementById("uage").value = data.age;
+                }
+            };
+
+            xhttp.open("GET", "getdata");
+            xhttp.send();
+        }
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

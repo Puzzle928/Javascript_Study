@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="login()">비동기로 사번 입력해서 사원명, 급여 검색 요청</button>
+    
+    <br><hr><br>
+
+    <div id="demo"></div>
+
+    <script>
+        function login() {
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    data = this.responseText;
+                    data = JSON.parse(data);
+
+                }
+            };
+            xhttp.open("POST", "update");    
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+            
+            queryString = "empno="+document.getElementById("setEmpno").value+
+                "&ename="+document.getElementById("setEname").value+
+                "&sal="+document.getElementById("setSal").value;
+            xhttp.send(queryString);
+        }
+
+
+    </script>
+</body>
+</html>
